@@ -42,7 +42,7 @@ class LibraryManager:
 
 manager = LibraryManager()
 
-st.title("📚 Library Manager")
+st.title("📚 Personal Library Manager")
 
 menu = st.sidebar.radio("Menu", ["Add Book", "Remove Book", "Search Books", "Display All Books", "Statistics"])
 
@@ -50,7 +50,7 @@ if menu == "Add Book":
     st.header("Add a New Book")
     title = st.text_input("Title")
     author = st.text_input("Author")
-    year = st.number_input("Publication Year", min_value=0, step=1)
+    year = st.number_input("Publication Year", min_value=1990, step=1)
     genre = st.text_input("Genre")
     read_status = st.checkbox("Have you read this book?")
     if st.button("Add Book"):
@@ -71,7 +71,8 @@ elif menu == "Search Books":
         results = manager.search_books(query)
         if results:
             for book in results:
-                st.write(f"**{book['title']}** by {book['author']} ({book['year']}) - {book['genre']} - {'Read' if book['read'] else 'Unread'}")
+                st.markdown(f"### 📖 {book['title']}", unsafe_allow_html=True)
+                st.markdown(f"- **Author:** {book['author']}\n- **Year:** {book['year']}\n- **Genre:** {book['genre']}\n- **Status:** {'✅ Read' if book['read'] else '❌ Unread'}")
         else:
             st.warning("No matching books found.")
 
@@ -81,7 +82,8 @@ elif menu == "Display All Books":
         st.warning("Your library is empty.")
     else:
         for book in manager.library:
-            st.write(f"**{book['title']}** by {book['author']} ({book['year']}) - {book['genre']} - {'Read' if book['read'] else 'Unread'}")
+            st.markdown(f"### 📖 <span style='color:blue;'>{book['title']}</span>", unsafe_allow_html=True)
+            st.markdown(f"- **Author:** {book['author']}\n- **Year:** {book['year']}\n- **Genre:** {book['genre']}\n- **Status:** {'✅ Read' if book['read'] else '❌ Unread'}")
 
 elif menu == "Statistics":
     st.header("Library Statistics")
