@@ -3,6 +3,9 @@ import json
 
 st.markdown("""
     <style>
+      body, .stApp {
+            background-color: white !important;
+        }
         .stTextInput, .stNumberInput, .stCheckbox, .stButton>button {
             background-color: #007BFF !important;
             color: white !important;
