@@ -1,6 +1,20 @@
 import streamlit as st
 import json
 
+st.markdown("""
+    <style>
+        .stTextInput, .stNumberInput, .stCheckbox, .stButton>button {
+            background-color: #007BFF !important;
+            color: white !important;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        .stButton>button:hover {
+            background-color: #0056b3 !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 class LibraryManager:
     def __init__(self, filename="library.json"):
         self.filename = filename
@@ -50,7 +64,7 @@ if menu == "Add Book":
     st.header("Add a New Book")
     title = st.text_input("Title")
     author = st.text_input("Author")
-    year = st.number_input("Publication Year", min_value=1990, step=1)
+    year = st.number_input("Publication Year", min_value=0, step=1)
     genre = st.text_input("Genre")
     read_status = st.checkbox("Have you read this book?")
     if st.button("Add Book"):
