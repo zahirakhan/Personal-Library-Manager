@@ -3,11 +3,12 @@ import json
 
 st.markdown("""
     <style>
-        .stNumberInput, .stCheckbox, .stButton>button {
+        .stButton>button {
             background-color: #007BFF !important;
             color: white !important;
             border-radius: 5px;
             padding: 10px;
+            width: 100% !important;
         }
         .stButton>button:hover {
             background-color: #0056b3 !important;
